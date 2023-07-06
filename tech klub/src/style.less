@@ -1,0 +1,143 @@
+@import url("https://cdn.jsdelivr.net/npm/@xz/fonts@1/serve/metropolis.min.css");
+@import url('https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;700&display=swap');
+
+:root {
+	--font: 'Lexend', arial, helvetica, sans-serif;
+	--font-size: 1.6rem;
+	--spacing: 20px;
+	--spacing-l: 40px;
+	--spacing-xl: 60px;
+	--spacing-xxl: 80px;
+	--spacing-xxxl: 120px;
+}
+
+*, *::after, *::before { margin: 0; padding: 0; box-sizing: border-box; word-break: break-word; }
+html { font-size: 62.5%; }
+body, html { height: 100%; }
+body {
+	font-size: var(--font-size);
+	font-family: var(--font);
+	line-height: 1;
+}
+
+i, u { font-style: normal; text-decoration: none; }
+
+#hero {
+	height: 100vh;
+	width: 100%;
+	background: red;
+	position: relative;
+	background: url(https://wallpapersafari.com/download/0pj5rH/);
+	background-size: cover;
+	background-position: center center;
+	transform: translateZ(0);
+}
+
+#hero { overflow: hidden; }
+#hero::after {
+	width: 100%; height: 100%; content: ''; display: block;
+	position: absolute; top: 0; left: 0;
+	
+	background: linear-gradient(-45deg, #FFA63D, #FF3D77, #338AFF, #3CF0C5); // 100% hue
+	background: linear-gradient(-45deg, #FF0085, #FF4); // pink > yellow
+	background-size: 1000%;
+	mix-blend-mode: overlay;
+	opacity: .7; // use to alter intensity
+	animation: bg_rotate 5s linear infinite;
+	will-change: background-position;
+	transform: translateZ(0);
+	pointer-events: none;
+}
+
+@keyframes bg_rotate {
+	0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+// misc garbage
+#hero {
+	position: relative;
+	display: flex;
+	justify-content: center;
+	align-items: flex-end;
+	height: 100vh;
+}
+
+.bottom {
+	position: absolute;
+	bottom: var(--spacing-xxl);
+	padding: var(--spacing-xxl) var(--spacing-xxxl);
+	max-width: 90%;
+	mix-blend-mode: lighten;
+	mix-blend-mode: lighten;
+	color: #ccc;
+}
+
+.bottom {
+	text-align: center;
+	sup {
+		letter-spacing: 3px;
+		opacity: .7;
+		font-weight: 300;
+		display: inline-block;
+		font-size: 1.1rem;
+		margin-bottom: 20px;
+		position: relative;
+		color: #fff;
+		&::after, &::before {
+			display: block; content: ''; width: 50%; height: 0.5px; margin-top: -0.25px;
+			position: absolute; top: 50%; right: 110%;
+			background: currentcolor;
+		}
+		&::before { right: auto; left: 110%; }
+	}
+	h1 { font-size: 9rem; margin: 0 0 var(--spacing); letter-spacing: -1px; }
+	p.lead { font-size: 1.6rem; font-weight: 400; letter-spacing: 1px; }
+	button {
+		all: unset;
+		box-sizing: border-box;
+		cursor: pointer;
+		padding: var(--spacing) var(--spacing-l);
+		border-radius: 50px;
+		background: #aaa;
+		color: #222;
+		font-size: 1.4rem; text-transform: uppercase; font-weight: 400;
+		margin-top: var(--spacing-l);
+		opacity: .8;
+		letter-spacing: .5px;
+		
+		&:hover { background: #eee; }
+		&.loading {
+			background: #aaa;
+			animation: loading alternate .2s ease infinite;
+		}
+	}
+}
+
+@keyframes loading {
+	0% { opacity: 0.5; }
+	100% { opacity: 1; }
+}
+
+@media screen and (max-width: 1000px) {
+	.bottom h1 { font-size: 8rem; }
+}
+@media screen and (max-width: 700px) {
+	// .bottom sup::after, .bottom sup::before { display: none; }
+	.bottom sup { letter-spacing: 2px; }
+	.bottom { padding: var(--spacing-xxl); }
+	.bottom h1 { font-size: 7rem; }
+	html { font-size: 45%; }
+}
+
+
+.top_left {
+	position: absolute; top: var(--spacing-l);
+	color: #fff; opacity: .5;
+	font-weight: bold;
+	font-size: 1.6rem;
+	letter-spacing: 1.5px;
+	font-family: 'Metropolis', sans-serif;
+	i { display: block; font-size: 70%; text-transform: uppercase; font-weight: 300; }
+}
